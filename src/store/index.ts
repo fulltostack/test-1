@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import logger from 'redux-logger';
 import appReducer from '../reducers';
 
 export const reducers = combineReducers({
@@ -6,7 +7,7 @@ export const reducers = combineReducers({
 });
 
 const configureStore = () => {
-  const store = createStore(reducers);
+  const store = createStore(reducers, applyMiddleware(logger));
   return store;
 };
 
